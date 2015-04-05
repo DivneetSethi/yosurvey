@@ -10,7 +10,12 @@
 				by
 				<span data-ng-bind="survey.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="survey.name"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="survey.name"></h4><br>
+            <b>Question 1:</b>&nbsp;<h5 class="list-group-item-heading" data-ng-bind="survey.question1"></h5>
+            <br>
+            <b>Question 2:</b>&nbsp;<h5 class="list-group-item-heading" data-ng-bind="survey.question2"></h5>
+            <br>
+            <b>Question 3:</b>&nbsp;<h5 class="list-group-item-heading" data-ng-bind="survey.question3"></h5>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!surveys.$resolved || surveys.length">

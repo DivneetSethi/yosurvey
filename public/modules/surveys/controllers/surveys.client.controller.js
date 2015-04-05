@@ -1,5 +1,4 @@
 'use strict';
-
 // Surveys controller
 angular.module('surveys').controller('SurveysController', ['$scope', '$stateParams', '$location', 'Authentication', 'Surveys',
 	function($scope, $stateParams, $location, Authentication, Surveys) {
@@ -9,7 +8,10 @@ angular.module('surveys').controller('SurveysController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Survey object
 			var survey = new Surveys ({
-				name: this.name
+				name: this.name,
+                question1: this.question1,
+                question2: this.question2,
+                question3: this.question3
 			});
 
 			// Redirect after save
@@ -18,6 +20,7 @@ angular.module('surveys').controller('SurveysController', ['$scope', '$statePara
 
 				// Clear form fields
 				$scope.name = '';
+                $scope.q1='';
            
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -56,6 +59,8 @@ angular.module('surveys').controller('SurveysController', ['$scope', '$statePara
 		$scope.find = function() {
 			$scope.surveys = Surveys.query();
 		};
+        
+       
 
 		// Find existing Survey
 		$scope.findOne = function() {
@@ -63,5 +68,7 @@ angular.module('surveys').controller('SurveysController', ['$scope', '$statePara
 				surveyId: $stateParams.surveyId
 			});
 		};
+        
+       
 	}
 ]);

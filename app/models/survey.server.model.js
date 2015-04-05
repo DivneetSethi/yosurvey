@@ -16,6 +16,24 @@ var SurveySchema = new Schema({
 		required: 'Please fill Survey name',
 		trim: true
 	},
+    question1: {
+		type: String,
+		default: '',
+		required: 'Please fill Survey Question 1',
+		trim: true
+	},
+    question2: {
+		type: String,
+		default: '',
+		required: 'Please fill Survey Question 2',
+		trim: true
+	},
+    question3: {
+		type: String,
+		default: '',
+		required: 'Please fill Survey Question 3',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now
