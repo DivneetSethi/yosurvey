@@ -14,8 +14,9 @@ angular.module('answers').controller('AnswersController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Answer object
 			var answer = new Answers ({
-				name: this.name,
                 answer1: this.answer1,
+                answer2: this.answer2,
+                answer3: this.answer3,
                 surveyid: surveyID
 			});
 

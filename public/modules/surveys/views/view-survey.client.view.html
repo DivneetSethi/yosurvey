@@ -4,10 +4,50 @@
 <div data-ng-controller="SurveysController" data-ng-init="findOne()">
 <!--<section data-ng-controller="SurveysController" data-ng-init="findOne()">-->
 	<div class="page-header">
-		<h1 data-ng-bind="survey.name"></h1>
-		<h4 data-ng-bind="survey.question1"></h1>
-		<h4 data-ng-bind="survey.question2"></h1>
-		<h4 data-ng-bind="survey.question3"></h1>
+	<table  width="100%">
+	    <tr>
+	        <td colspan="6"><h1 data-ng-bind="survey.name"></h1></td>
+	    </tr>
+	    <tr>
+            <td width="2%" valign="top">
+                <h4>Q1.</h4>
+                <h5>1.</h5>
+                <h5>2.</h5>
+                <h5 data-ng-hide="(survey.ans1Option3=='')">3.</h5>
+            </td>
+	        <td valign="top">
+	            <h4 data-ng-bind="survey.question1"></h4>
+		        <h5 data-ng-bind="survey.ans1Option1"></h5>
+		        <h5 data-ng-bind="survey.ans1Option2"></h5>
+		        <h5 data-ng-bind="survey.ans1Option3"></h5>
+	        </td>
+	        <td width="2%" valign="top">
+                <h4>Q2.</h4>
+                <h5>1.</h5>
+                <h5>2.</h5>
+                <h5 data-ng-hide="(survey.ans2Option3=='')">3.</h5>
+            </td>
+	        <td valign="top">
+	            <h4 data-ng-bind="survey.question2"></h4>
+		        <h5 data-ng-bind="survey.ans2Option1"></h5>
+		        <h5 data-ng-bind="survey.ans2Option2"></h5>
+		        <h5 data-ng-bind="survey.ans2Option3"></h5>
+	        </td>
+	        <td width="2%" valign="top">
+                <h4>Q3.</h4>
+                <h5>1.</h5>
+                <h5>2.</h5>
+                <h5 data-ng-hide="(survey.ans3Option3=='')">3.</h5>
+            </td>
+	        <td valign="top">
+	            <h4 data-ng-bind="survey.question3"></h4>
+		        <h5 data-ng-bind="survey.ans3Option1"></h5>
+		        <h5 data-ng-bind="survey.ans3Option2"></h5>
+		        <h5 data-ng-bind="survey.ans3Option3"></h5>
+	        </td>
+	    </tr>
+	</table>
+
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == survey.user._id))">
 		<a class="btn btn-primary" href="/#!/surveys/{{survey._id}}/edit">
@@ -30,20 +70,36 @@
 <!-- Answers Section -->
 <div data-ng-controller="AnswersController">
     <div class="page-header">
-        <h1>New Answer</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
-                        <input type="text" data-ng-model="answer1" id="answer1" class="form-control" placeholder="answer1" required>
+                       <table  width="100%">
+                          <tr>
+                              <td colspan="3" valign="top">
+                                   <h3>Answer This Survey</h3>
+                                  <small><font color="silver">*Enter option numbers as answers</font></small>
+                                  <br><br>
+                              </td>
+                          </tr>
+                           <tr>
+                               <td>
+                                   <input type="text" data-ng-model="answer1" id="answer1" class="form-control" placeholder="Answer 1" required style="width: 30%">
+                               </td>
+                               <td>
+                                   <input type="text" data-ng-model="answer2" id="answer2" class="form-control" placeholder="Answer 2" required style="width: 30%">
+                               </td>
+                               <td>
+                                   <input type="text" data-ng-model="answer3" id="answer3" class="form-control" placeholder="Answer 3" required style="width: 30%">
+                               </td>
+                           </tr>
+                       </table>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-default">
+                    <input type="submit" class="btn btn-default" value="Submit Answers">
                 </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>

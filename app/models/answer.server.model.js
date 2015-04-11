@@ -10,16 +10,24 @@ var mongoose = require('mongoose'),
  * Answer Schema
  */
 var AnswerSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Answer name',
-		trim: true
-	},
     answer1: {
 		type: String,
 		default: '',
 		required: 'Please fill Answer 1',
+		trim: true
+	},
+
+    answer2: {
+		type: String,
+		default: '',
+		required: 'Please fill Answer 2',
+		trim: true
+	},
+
+    answer3: {
+		type: String,
+		default: '',
+		required: 'Please fill Answer 3',
 		trim: true
 	},
     surveyid: {
