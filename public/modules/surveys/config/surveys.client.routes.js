@@ -20,6 +20,10 @@ angular.module('surveys').config(['$stateProvider',
 		state('editSurvey', {
 			url: '/surveys/:surveyId/edit',
 			templateUrl: 'modules/surveys/views/edit-survey.client.view.html'
-		});
+		}).
+		state('statsSurvey', {
+			url: '/surveys/:surveyId/stats',
+			templateUrl: 'modules/surveys/views/stats-survey.client.view.html'
+        });
 	}
 ]);
