@@ -70,5 +70,8 @@ angular.module('answers').controller('AnswersController', ['$scope', '$statePara
 				answerId: $stateParams.answerId
 			});
 		};
+
+
+
 	}
 ]);

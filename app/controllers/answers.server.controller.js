@@ -33,6 +33,7 @@ exports.read = function(req, res) {
 	res.jsonp(req.answer);
 };
 
+
 /**
  * Update a Answer
  */
@@ -83,6 +84,7 @@ exports.list = function(req, res) {
 		}
 	});
 };
+
 
 /**
  * Answer middleware
