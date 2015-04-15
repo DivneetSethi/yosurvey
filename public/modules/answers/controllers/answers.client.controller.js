@@ -72,6 +72,11 @@ angular.module('answers').controller('AnswersController', ['$scope', '$statePara
 		};
 
 
+        // Find a list of Answers for specific survey
+		$scope.answerCount = function(id) {
+			$scope.answers = Answers.query({"surveyID":id});
+		};
+
 
 	}
 ]);
