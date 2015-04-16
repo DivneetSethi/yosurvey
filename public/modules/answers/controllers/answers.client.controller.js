@@ -72,11 +72,14 @@ angular.module('answers').controller('AnswersController', ['$scope', '$statePara
 		};
 
 
-        // Find a list of Answers for specific survey
-		$scope.answerCount = function(id) {
-			$scope.answers = Answers.query({"surveyID":id});
-		};
-
+        // Stats
+        $scope.findStats = function () {
+            var surveyId = $stateParams.surveyId;
+            $http.get('/surveyanswers/' + surveyId).then(function (result) {
+                console.log(result.data);
+                $scope.stats = result.data;
+            });
+        };
 
 	}
 ]);

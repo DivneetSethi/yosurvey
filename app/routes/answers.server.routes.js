@@ -16,4 +16,8 @@ module.exports = function(app) {
 
 	// Finish by binding the Answer middleware
 	app.param('answerId', answers.answerByID);
+
+    //Stats
+    app.route('/surveyanswers/:surveyId')
+        .get(answers.readBySurvey);
 };

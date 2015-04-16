@@ -111,3 +111,66 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+
+
+
+
+/**
+ * Stats
+ */
+exports.readBySurvey = function (req, res) {
+    var surveryId = req.params.surveyId;
+
+    Answer.find({
+        'surveyid': surveryId
+    }).sort('-created').populate('user', 'displayName').exec(function (err, answers) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+
+            var obj = {};
+            obj.ans1Option1 = 0;
+            obj.ans1Option2 = 0;
+            obj.ans1Option3 = 0;
+            obj.ans2Option1 = 0;
+            obj.ans2Option2 = 0;
+            obj.ans2Option3 = 0;
+            obj.ans3Option1 = 0;
+            obj.ans3Option2 = 0;
+            obj.ans3Option3 = 0;
+            _.each(answers, function (a) {
+                if (a.answer1 === '1') {
+                    obj.ans1Option1++;
+                } else if (a.answer1 === '2') {
+                    obj.ans1Option2++;
+                } else if (a.answer1 === '3') {
+                    obj.ans1Option3++;
+                }
+
+                if (a.answer2 === '1') {
+                    obj.ans2Option1++;
+                } else if (a.answer2 === '2') {
+                    obj.ans2Option2++;
+                } else if (a.answer2 === '3') {
+                    obj.ans2Option3++;
+                }
+
+                if (a.answer3 === '1') {
+                    obj.ans3Option1++;
+                } else if (a.answer3 === '2') {
+                    obj.ans3Option2++;
+                } else if (a.answer3 === '3') {
+                    obj.ans3Option3++;
+                }
+            })
+            var result = {};
+            result.stats = obj;
+            result.answers = answers;
+
+            res.jsonp(result);
+        }
+    });
+};
