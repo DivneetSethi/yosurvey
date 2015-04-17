@@ -1,8 +1,8 @@
 'use strict';
 
 // Answers controller
-angular.module('answers').controller('AnswersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Answers',
-	function($scope, $stateParams, $location, Authentication, Answers) {
+angular.module('answers').controller('AnswersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Answers', '$http',
+	function($scope, $stateParams, $location, Authentication, Answers, $http) {
 		$scope.authentication = Authentication;
 
         //Retrive survey id
